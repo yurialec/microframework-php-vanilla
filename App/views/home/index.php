@@ -16,6 +16,13 @@ endif;
 $pagination = new Pagination($data['registros'], isset($_GET['page']) ? $_GET['page'] : 1, 5);
 ?>
 
+<?php
+//nENHUM REGISTRO
+if (empty($pagination->resultado())) :
+    echo "Nenhum registro encontrado";
+endif;
+?>
+
 <div class="row container">
     <?php foreach ($pagination->resultado() as $note) : ?>
         <h1><a href="/notes/ver/<?= $note['id'] ?>"><?= $note['titulo'] ?><a></h1>
